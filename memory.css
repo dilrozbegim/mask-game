@@ -1,0 +1,93 @@
+/* Game grid */
+#game {
+  display: grid;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 30px;
+  perspective: 1000px; /* 3D effekt uchun */
+}
+
+/* Karta konteyneri */
+.card {
+  width: 120px;
+  height: 120px;
+  cursor: pointer;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Karta bosilganda (o'girilganda) */
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+/* Kartaning ikkala tomoni uchun umumiy stil */
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Orqa tomoni ko'rinmasligi uchun */
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* Yopiq holati (Logo bor tomoni) */
+.card-back {
+  background: white url('logo.jpg') center/cover no-repeat;
+  z-index: 2;
+}
+
+/* Ochilgan holati (Rasm bor tomoni) */
+.card-front {
+  background-color: white; /* Orqa foni oq */
+  transform: rotateY(180deg);
+}
+
+
+.card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Rasmni kartaga to'liq yoyadi */
+    border-radius: 15px;
+}
+
+/* Hover effekti */
+.card:not(.flipped):hover {
+  transform: scale(1.05);
+}
+
+/* Bomba effekti */
+.card.bomb-flash .card-front {
+  animation: flash 0.5s ease-in-out 2;
+}
+
+@keyframes flash {
+  0%, 100% { background-color: red; }
+  50% { background-color: yellow; }
+}
+
+.title {
+    font-family: 'Silkscreen', cursive; /* Google Fontni ulaymiz */
+    font-size: 3.5em;                 /* Matn o'lchami */
+    color: #f1c40f;                   /* Oltin rang */
+    margin-top: 20px;
+    text-transform: uppercase;        /* Hammasini katta harf qiladi */
+    text-shadow: 4px 4px 0px #000,    /* Retro effekt uchun soya */
+                 -1px -1px 0px #000,  
+                  1px -1px 0px #000,
+                 -1px  1px 0px #000,
+                  1px  1px 0px #000;
+    letter-spacing: 5px;              /* Harflar orasidagi masofa */
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+/* Sarlavha uchun oddiy animatsiya (tovlanish) */
+@keyframes glow {
+    from { filter: drop-shadow(0 0 5px #f1c40f); }
+    to { filter: drop-shadow(0 0 20px #e67e22); }
+}

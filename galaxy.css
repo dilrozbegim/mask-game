@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height:480px;
+    background-color: rgb(12, 134, 12);
+    background-image: url("background.jpg");
+    background-size: cover;       /* fon to‘liq chiqadi */
+    background-position: center;  /* markazda turadi */
+    background-repeat: no-repeat;
+    width: 100%;           /* Telefonlarda ekran bo'ylab yoyiladi */
+    max-width: 1140px;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Pacifico', cursive;
+}
+
+.container img {
+    width: 400px;
+    height: auto;
+    margin-bottom: -40px;
+
+    }
+
+
+.button-68 {
+  appearance: none;
+  backface-visibility: hidden;
+  background-color: #27ae60;
+  border-radius: 8px;
+  border-style: none;
+  box-shadow: rgba(39, 174, 96, .15) 0 4px 9px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: Inter,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size: x-large;
+  font-weight: 600;
+  letter-spacing: normal;
+  line-height: 1.5;
+  outline: none;
+  overflow: hidden;
+  padding: 13px 20px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transform: translate3d(0, 0, 0);
+  transition: all .3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: top;
+
+  /* ===== TO‘G‘RILASH ===== */
+  white-space: nowrap;         /* matn satrga tushmasin */
+  width: 200px;                /* tugma o‘lchami bir xil */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-68:hover {
+  background-color: #1e8449;
+  opacity: 1;
+  transform: translateY(0);
+  transition-duration: .35s;
+}
+
+.button-68:active {
+  transform: translateY(2px);
+  transition-duration: .35s;
+}
+
+.button-68:hover {
+  box-shadow: rgba(39, 174, 96, .2) 0 6px 12px;
+}
+
+.title {
+  font-family: 'Silkscreen', cursive;
+  font-size: 50px;
+  color: #0daf48; /* asosiy matn rangi */
+  margin-top: -350px;
+  margin-left: 100px;
+
+  /* ===== oq chekka ===== */
+  text-shadow: 
+    -2px -2px 0 black,
+     2px -2px 0 black,
+    -2px  2px 0 darkgreen,
+     2px  2px 0 darkgreen;
+}
+
+
+.settings-panel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.6);
+  padding: 15px;
+  border-radius: 10px;
+  display: none;
+  color: #fff;
+  font-family: 'Silkscreen', cursive;
+  z-index: 9999;
+}
+
+.setting-item {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.settings-panel button,
+.settings-panel select {
+  margin-left: 10px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}

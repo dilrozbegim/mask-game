@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>Cookies</title>
+  <link rel="stylesheet" href="galaxy.css">
+  <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="container">
+    <img src="mask.png" alt="mask">
+  </div>
+
+  <div class="title" id="titleText">Mask movie game</div>
+
+<a href="memory.html" class="button-68 soundBtn" 
+   style="display: inline-block; margin-top: -150px; margin-left: -350px; text-decoration: none;">
+   Play a game
+</a>
+
+  <button class="button-68 soundBtn settingsBtn"
+    style="margin-top:70px;margin-left:-200px;">
+    Settings
+  </button>
+
+  <div class="settings-panel">
+    <div class="setting-item">
+      🎵 Music:
+      <button id="musicToggle">ON</button>
+    </div>
+
+    <div class="setting-item">
+      🌍 Language:
+      <select id="langSelect">
+        <option value="en">ENG</option>
+        <option value="ru">RUS</option>
+        <option value="uz">UZB</option>
+      </select>
+    </div>
+  </div>
+
+
+  <audio id="clickSound">
+    <source src="gamemusic.mp3" type="audio/mpeg">
+  </audio>
+
+<script>
+const buttons = document.querySelectorAll(".soundBtn");
+const sound = document.getElementById("clickSound");
+const settingsBtn = document.querySelector(".settingsBtn");
+const panel = document.querySelector(".settings-panel");
+const musicToggle = document.getElementById("musicToggle");
+const langSelect = document.getElementById("langSelect");
+
+let musicOn = true;
+
+// click sound
+buttons.forEach(btn => {
+  btn.addEventListener("mousedown", () => {
+    if (!musicOn) return;
+    sound.pause();
+    sound.currentTime = 0;
+    sound.play();
+  });
+});
+
+// settings panel toggle
+settingsBtn.addEventListener("click", () => {
+  panel.style.display = panel.style.display === "block" ? "none" : "block";
+});
+
+// music ON/OFF
+musicToggle.addEventListener("click", () => {
+  musicOn = !musicOn;
+  musicToggle.textContent = musicOn ? "ON" : "OFF";
+  if (!musicOn) {
+    sound.pause();
+    sound.currentTime = 0;
+  }
+});
+
+// language switch
+const texts = {
+  en: { title: "Mask movie game", play: "Play a game", settings: "Settings", about: "About us" },
+  ru: { title: "Игра Маска", play: "Играть", settings: "Настройки", about: "О нас" },
+  uz: { title: "Mask o‘yini", play: "O‘yin boshlash", settings: "Sozlamalar", about: "Biz haqimizda" }
+};
+
+langSelect.addEventListener("change", () => {
+  const lang = langSelect.value;
+  document.getElementById("titleText").textContent = texts[lang].title;
+  document.getElementById("playBtn").textContent = texts[lang].play;
+  document.querySelector(".settingsBtn").textContent = texts[lang].settings;
+  document.getElementById("aboutBtn").textContent = texts[lang].about;
+});
+
+
+
+</script>
+
+</body>
+</html>
